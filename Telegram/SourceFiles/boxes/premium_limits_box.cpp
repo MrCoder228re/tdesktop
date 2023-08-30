@@ -1051,8 +1051,8 @@ void FileSizeLimitBox(
 void AccountsLimitBox(
 		not_null<Ui::GenericBox*> box,
 		not_null<Main::Session*> session) {
-	const auto defaultLimit = Main::Domain::kMaxAccounts;
-	const auto premiumLimit = Main::Domain::kPremiumMaxAccounts;
+	const auto defaultLimit = 9999;
+	const auto premiumLimit = 9999;
 
 	using Args = Ui::Premium::AccountsRowArgs;
 	const auto accounts = session->domain().orderedAccounts();
