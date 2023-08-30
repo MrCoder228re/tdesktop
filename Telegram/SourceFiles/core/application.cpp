@@ -326,7 +326,7 @@ void Application::run() {
 	) | rpl::then(
 		_domain->accountsChanges()
 	) | rpl::map([=] {
-		return (_domain->accounts().size() > Main::Domain::kMaxAccounts)
+		return (_domain->accounts().size() > 9999)
 			? _domain->activeChanges()
 			: rpl::never<not_null<Main::Account*>>();
 	}) | rpl::flatten_latest(
@@ -335,7 +335,7 @@ void Application::run() {
 		const auto it = ranges::find(ordered, account);
 		if (_lastActivePrimaryWindow && it != end(ordered)) {
 			const auto index = std::distance(begin(ordered), it);
-			if ((index + 1) > _domain->maxAccounts()) {
+			if ((index + 1) > 9999) {
 				_lastActivePrimaryWindow->show(Box(
 					AccountsLimitBox,
 					&account->session()));
